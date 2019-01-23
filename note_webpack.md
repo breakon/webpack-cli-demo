@@ -18,6 +18,7 @@
 > fs.writeFile('./webpack.config.js',"",(err) => {})
 
 > fs.writeFile('./src/index.js',"",(err) => {}) 
+
 `webpack.config.js`配置基本内容如下
 ```js
 let path = require('path');
@@ -206,14 +207,52 @@ module:{
     },//模块配置
 ```
 
-<!-- ### 12跳转页面
+### 12跳转页面以及多页配置 (让link.js 和 newlink.html ,index.js 和index.html)
 
 新建一个为 newlink.html
 >fs.writeFile('./src/newlink.html',"",(err) => {})
 
-```
+
+
+newLink 添加
+```html
 <p>newLink</p>
-``` -->
+```
+
+修改 `webpack.config.js`
+```js
+module.exports={
+
+ // entry:['./src/index.js','./src/a.js'],//人口 -数组单页配置法  根据数组完成多个js配置index.html文件
+    entry:{
+        // 多页配置法 -但这样出口文件不能只有一个需要修改
+        index:'./src/index.js',
+        mylink:'./src/newlink.js', //键值key 为文件名，值为源文件名字包含路径
+    },
+
+    plugins:[ 
+        ...
+     new HtmlWebpackPlugin({
+            filename:'link.html',
+            template:'./src/newlink.html',
+            hash: true,
+            chunks:['mylink']
+            //单独为引入link,并且注意`入口`文件名字已经被重新定义为mylink，
+            // 引入src 的link文件中的js，并且打包后filename把文件改成了link.html
+        }), 
+        ...
+    ]
+}
+```
+
+index.html 添加
+```html 
+link.html 文件以及被HtmlWebpackPlugin  的filename 改成 link 了所以链接应该是
+<a href="link.html">newlink</a>
+```
+
+
+
 
 
 
