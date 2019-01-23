@@ -1,0 +1,31 @@
+{
+  "name": "webpack-cli-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/breakon/webpack-cli-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/breakon/webpack-cli-demo/issues"
+  },
+  "homepage": "https://github.com/breakon/webpack-cli-demo#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.1",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^3.2.0"
+  }
+}
