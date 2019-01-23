@@ -1,3 +1,6 @@
+# 这是一个记录我如何一步一步搭建webpack4 基本操作
+
+
 ### 1.初始化 webpack-cli-demo 文件夹并且 在文件夹内输入
 
 创建一个更目录 `package.json`
@@ -31,7 +34,7 @@ module.exports={
     },
     devServer:{
         contentBase:'./build',
-        port:6666,
+        port:10086,
         compress:true,// 服务器压缩
         open:true,
         // hot:true
@@ -210,9 +213,7 @@ module:{
 ### 12跳转页面以及多页配置 (让link.js 和 newlink.html ,index.js 和index.html)
 
 新建一个为 newlink.html
->fs.writeFile('./src/newlink.html',"",(err) => {})
-
-
+>fs.writeFile('./src/newlink.html',"",(err) => {}) 
 
 newLink 添加
 ```html
@@ -245,13 +246,13 @@ module.exports={
 }
 ```
 
-index.html 添加
+* index.html 添加
 ```html 
-link.html 文件以及被HtmlWebpackPlugin  的filename 改成 link 了所以链接应该是
+<!-- link.html 文件以及被HtmlWebpackPlugin  的filename 改成 link 了所以链接应该是 -->
 <a href="link.html">newlink</a>
 ```
 
-
+# webpack基本操作 end 
 
 
 
