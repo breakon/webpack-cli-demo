@@ -157,3 +157,63 @@ if(module.hot){
 module.exports="热更新完成hhh..."
 ```
 
+### 11.使用css
+webpack 只能识别js ，css模块不能识别
+`stylus` 是 CSS 的预处理框架,可以编程的css 
+>npm install   style-loader  css-loader less less-loader stylus stylus-loader
+
+需要loader加载器 ,配置webpack.config
+```js
+
+ module:{
+        rules:[
+            { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]  }, 
+        ]
+    },//模块配置
+```
+创建style.css
+>fs.writeFile('./src/style.css',"",(err) => {})
+```css
+body{ padding: 0; margin: 0;}
+```
+添加内容到`index.js`
+```js
+// index.js
+ import './style.css'; //引入 
+```
+#### 成功引入后 运行测试 
+>npm run start
+
+### 11.5 使用stylus
+
+创建gStyls.styl
+>fs.writeFile('./src/gStyls.styl',"",(err) => {})
+```css
+body
+  background:#efefef
+```
+引入
+```js
+// index.js
+import './gStyls.styl';
+```
+修改webpack.config.js
+```js
+module:{
+    rules:[
+        { test: /\.css|\.styl$/, use: [ 'style-loader', 'css-loader','stylus-loader' ]}, //修改的
+    ], 
+    },//模块配置
+```
+
+<!-- ### 12跳转页面
+
+新建一个为 newlink.html
+>fs.writeFile('./src/newlink.html',"",(err) => {})
+
+```
+<p>newLink</p>
+``` -->
+
+
+

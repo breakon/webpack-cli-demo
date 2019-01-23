@@ -17,7 +17,12 @@ module.exports={
         open:true,
         hot:true
     },//开发服务器
-    module:{},//模块配置
+    module:{
+        rules:[
+        { test: /\.css|\.styl$/, use: [ 'style-loader', 'css-loader','stylus-loader' ]  },
+        // { test: /\.styl/, use: [ 'style-loader', 'css-loader', 'stylus-loader' ] },
+    ]
+    },//模块配置
     plugins:[
         new webpack.HotModuleReplacementPlugin({
             //热更新设置好，但还无法使用需要到js文件监听模块
@@ -33,3 +38,4 @@ module.exports={
     resolve:{},//配置解析
     
 }
+
