@@ -118,3 +118,42 @@ output:{
 >npm run build
 
 ### 10 热更新配置
+##热更新
+```js
+
+let webpack= require('webpack');//热更新
+module.exports={
+  ...
+  devServer:{
+      ...
+      hot:true
+      ...
+  },
+  ...
+  plugins:[
+        new webpack.HotModuleReplacementPlugin({
+            //热更新设置好，但还无法使用需要到js文件监听模块
+         }),]
+}
+```
+
+index.js 是控制html css js 的一个模块,可以通过`require` 关联
+```js
+// index.js模块
+let str = require('./link.js');
+document.querySelector('#hotUp').innerText=str;
+if(module.hot){
+    module.hot.accept();
+}
+```
+```html
+<div id="hotUp" >我是一个热更新样例</div>
+```
+
+创建
+>fs.writeFile('./src/link.js',"",(err) => {})
+```js
+// link.js引入到index模块
+module.exports="热更新完成hhh..."
+```
+

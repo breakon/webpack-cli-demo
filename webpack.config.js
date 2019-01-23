@@ -1,6 +1,7 @@
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');//代码片段打包
 let CleanWebpackPlugin = require('clean-webpack-plugin'); 
+let webpack= require('webpack');
 module.exports={
     entry:'./src/index.js', //人口
     output:{
@@ -14,10 +15,13 @@ module.exports={
         port:10086,
         compress:true,// 服务器压缩
         open:true,
-        // hot:true
+        hot:true
     },//开发服务器
     module:{},//模块配置
     plugins:[
+        new webpack.HotModuleReplacementPlugin({
+            //热更新设置好，但还无法使用需要到js文件监听模块
+         }),
         new HtmlWebpackPlugin({
             template:'./src/index.html',//代码模板页位置
             title:"我的第一个demo代码模板片段",
