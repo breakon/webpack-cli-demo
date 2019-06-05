@@ -6,8 +6,8 @@ module.exports={
      // entry:['./src/index.js','./src/a.js'],//人口 -数组单页配置法  根据数组完成多个js配置index.html文件
      entry:{
         // 多页配置法 -但这样出口文件不能只有一个需要修改
-        ['./index/index']:'./src/index.js', //路径可以是key
-        ['./mylink/mylink']:'./src/link.js', //键值key 为文件名，值为源文件名字包含路径
+        './index/index':'./src/index.js', //路径可以是key
+        './mylink/mylink':'./src/link.js', //键值key 为文件名，值为源文件名字包含路径
     },
     output:{
         // 出口
